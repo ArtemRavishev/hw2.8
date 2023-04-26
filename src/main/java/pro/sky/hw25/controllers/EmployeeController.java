@@ -8,14 +8,16 @@ import pro.sky.hw25.domain.Employee;
 import pro.sky.hw25.services.EmployeeService;
 import pro.sky.hw25.exceptions.EmployeeAlreadyAddedException;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    private final EmployeeService service;
+    private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeService service) {
-        this.service = service;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping
@@ -25,18 +27,23 @@ public class EmployeeController {
 
     @GetMapping("/add")
     public Employee addEmployee(@RequestParam("firstName") String firstName,
-                                @RequestParam("lastName") String  lastName) {
-        return service.addEmployee(firstName, lastName);
+                                @RequestParam("lastName") String  lastName,@RequestParam("department") int department,
+                                @RequestParam("salary") int  salary) {
+        return employeeService.addEmployee(firstName, lastName,department,salary);
     }
 
     @GetMapping("/find")
     public Employee findEmployee(@RequestParam("firstName") String firstName,
-                         @RequestParam("lastName") String lastName) {
-        return service.findEmployee(firstName, lastName);
+                         @RequestParam("lastName") String lastName,@RequestParam("department") int department,
+                                 @RequestParam("salary") int  salary) {
+        return employeeService.findEmployee(firstName, lastName,department,salary);
     }
     @GetMapping("/remove")
     public Employee removeEmployee (@RequestParam("firstName") String firstName,
-                         @RequestParam("lastName") String lastName) {
-        return service. removeEmployee(firstName, lastName);
+                         @RequestParam("lastName") String lastName,@RequestParam("department") int department,
+                                    @RequestParam("salary") int  salary) {
+        return employeeService. removeEmployee(firstName, lastName,department,salary);
     }
+    @GetMapping
+    public List<Employee>getAll(){return employeeService.getAll();}
 }

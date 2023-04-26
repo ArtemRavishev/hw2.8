@@ -6,6 +6,8 @@ import pro.sky.hw25.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.hw25.exceptions.EmployeeNotFoundException;
 import pro.sky.hw25.exceptions.EmployeeStorageIsFullException;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -20,11 +22,11 @@ public class ArrayEmployeeService implements EmployeeService {
 
 
     @Override
-    public Employee addEmployee(String firstName, String lastName) {
+    public Employee addEmployee(String firstName, String lastName,int department, int salary) {
         if (curetntSize >= CAPACITY) {
             throw new EmployeeStorageIsFullException();
         }
-        Employee temp = new Employee(firstName,lastName);
+        Employee temp = new Employee(firstName,lastName, department, salary);
         for (Employee emp : stuff) {
             if (Objects.equals(emp, temp))
                 throw new EmployeeAlreadyAddedException();
@@ -36,8 +38,8 @@ public class ArrayEmployeeService implements EmployeeService {
 
 
     @Override
-    public Employee removeEmployee(String firstName, String lastName) {
-        Employee temp = new Employee(firstName, lastName);
+    public Employee removeEmployee(String firstName, String lastName,int department, int salary) {
+        Employee temp = new Employee(firstName, lastName,department,salary);
         int i;
         for (i = 0; i < curetntSize; ++i){
             if (stuff[i].equals(temp))
@@ -54,12 +56,16 @@ public class ArrayEmployeeService implements EmployeeService {
     }
 
     @Override
-    public Employee findEmployee(String firstName, String lastName) {
-        Employee temp = new Employee(firstName, lastName);
+    public Employee findEmployee(String firstName, String lastName,int department, int salary) {
+        Employee temp = new Employee(firstName, lastName,department,salary);
         for (var emp : stuff) {
             if (Objects.equals(emp, temp)) return  emp;
         }
         throw new EmployeeNotFoundException();
     }
 
+    @Override
+    public List<Employee>getAll(){return new ArrayList<>(List.of(stuff));}
 }
+
+

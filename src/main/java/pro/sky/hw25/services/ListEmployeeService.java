@@ -19,8 +19,8 @@ public class ListEmployeeService implements EmployeeService{
     List<Employee> stuff = new ArrayList<>();
 
     @Override
-    public Employee addEmployee(String firstName, String lastName) {
-        Employee temp = new Employee(firstName,lastName);
+    public Employee addEmployee(String firstName, String lastName,int department, int salary) {
+        Employee temp = new Employee(firstName,lastName,department,salary);
         if (stuff.size() >= CAPACITY) {
             throw new EmployeeStorageIsFullException();
         }
@@ -32,8 +32,8 @@ public class ListEmployeeService implements EmployeeService{
     }
 
     @Override
-    public Employee removeEmployee(String firstName, String lastName) {
-        int index = stuff.indexOf(new Employee(firstName, lastName));
+    public Employee removeEmployee(String firstName, String lastName,int department, int salary ) {
+        int index = stuff.indexOf(new Employee(firstName, lastName,department,salary));
         if (index == -1) {
             throw new EmployeeNotFoundException();
         }
@@ -41,11 +41,12 @@ public class ListEmployeeService implements EmployeeService{
     }
 
     @Override
-    public Employee findEmployee(String firstName, String lastName) {
-        int index = stuff.indexOf(new Employee(firstName, lastName));
+    public Employee findEmployee(String firstName, String lastName,int department, int salary) {
+        int index = stuff.indexOf(new Employee(firstName, lastName,department,salary));
         if (index == -1) {
             throw new EmployeeNotFoundException();
         }
         return stuff.get(index);
     }
+    public List<Employee>getAll(){return new ArrayList<>(stuff);}
 }
