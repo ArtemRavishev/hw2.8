@@ -22,7 +22,7 @@ public class EmployeeController {
 
     @GetMapping("/welcome")
     public String welcome() {
-        return "Добро пожаловать в HR Application";
+        return " Добро пожаловать в HR Application";
     }
 
     @GetMapping("/add")
