@@ -1,29 +1,3 @@
-GET http://localhost:8080/employee/add?firstName=Ivan&lastName=Ivanod&salary=50000&department=1
-###
-GET http://localhost:8080/employee/add?firstName=Oleg&lastName=Aleksandrov&salary=150000&department=1
-###
-GET http://localhost:8080/employee/add?firstName=Ilya&lastName=Sotnikov&salary=70000&department=2
-###
-GET http://localhost:8080/employee/add?firstName=Anton&lastName=Kovalchuk&salary=80000&department=2
-###
-GET http://localhost:8080/employee/add?firstName=Andrey&lastName=Piryazev&salary=40000&department=1
-###
-GET http://localhost:8080/employee/add?firstName=Danil&lastName=Martinkevich&salary=30000&department=1
-###
-GET http://localhost:8080/departments/all
-###
-GET http://localhost:8080/departments/all?departmentId=1
-###
-GET http://localhost:8080/departments/all?departmentId=2
-###
-GET http://localhost:8080/departments/min-salary?departmentId=1
-###
-GET http://localhost:8080/departments/min-salary?departmentId=2
-###
-GET http://localhost:8080/departments/max-salary?departmentId=1
-###
-GET http://localhost:8080/departments/max-salary?departmentId=2
-###
 GET http://localhost:8080/employee/add?firstName=iVAn&lastName=ivaNOV&salary=50000&department=1
 ###
 GET http://localhost:8080/employee/add?firstName=ilYA&lastName=ivaNOV&salary=50000&department=1
