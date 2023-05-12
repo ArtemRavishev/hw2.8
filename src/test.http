@@ -26,6 +26,6 @@ GET http://localhost:8080/departments/max-salary?departmentId=2
 ###
 GET http://localhost:8080/employee/add?firstName=iVAn&lastName=ivaNOV&salary=50000&department=1
 ###
-GET http://localhost:8080/employee/add?firstName=iLYA&lastName=ivaNOV&salary=50000&department=1
+GET http://localhost:8080/employee/add?firstName=ilYA&lastName=ivaNOV&salary=50000&department=1
 ###
 GET http://localhost:8080/employee
