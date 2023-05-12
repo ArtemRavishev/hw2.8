@@ -2,6 +2,7 @@ package pro.sky.hw25.services;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import pro.sky.hw25.ValidatorService;
 import pro.sky.hw25.domain.Employee;
 import pro.sky.hw25.exceptions.EmployeeAlreadyAddedException;
 import pro.sky.hw25.exceptions.EmployeeNotFoundException;
@@ -18,9 +19,15 @@ public class ListEmployeeService implements EmployeeService{
 
     List<Employee> stuff = new ArrayList<>();
 
+    private final ValidatorService validatorService;
+
+    public ListEmployeeService(ValidatorService validatorService) {
+        this.validatorService = validatorService;
+    }
+
     @Override
     public Employee addEmployee(String firstName, String lastName,int department, int salary) {
-        Employee temp = new Employee(firstName,lastName,department,salary);
+        Employee temp = new Employee(validatorService.validatorName(firstName), validatorService.validatorSurname(lastName), department,salary);
         if (stuff.size() >= CAPACITY) {
             throw new EmployeeStorageIsFullException();
         }
